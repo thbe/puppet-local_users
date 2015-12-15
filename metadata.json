@@ -1,0 +1,16 @@
+{
+  "name": "thbe-local_users",
+  "version": "0.1.0",
+  "author": "thbe",
+  "summary": "Create local users",
+  "license": "GPL-3.0",
+  "source": "https://github.com/thbe/puppet-local_users.git",
+  "project_page": "https://github.com/thbe/puppet-local_users",
+  "issues_url": "https://github.com/thbe/puppet-local_users/issues",
+  "operatingsystem_support": [
+    { "operatingsystem": "RedHat", "operatingsystemrelease": [ "7.0" ] },
+    { "operatingsystem": "CentOS", "operatingsystemrelease": [ "7.0" ] },
+    { "operatingsystem": "Scientific", "operatingsystemrelease": [ "7.0" ] }
+  ],
+  "dependencies": [ ]
+}
