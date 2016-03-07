@@ -11,25 +11,34 @@ describe 'local_users' do
         facts
       end
 
+      let(:params) {
+        {
+          :manage_root => true,
+          :root_password_hash => '!!',
+          :users => {
+            'john' => { 'comment' => 'John Doe', 'shell' => '/bin/bash',  'password' => '!!' },
+            'jane' => { 'comment' => 'Jane Doe', 'home'  => '/home/jane', 'groups'   => 'wheel' }
+          }
+        }
+      }
+
       it { is_expected.to compile.with_all_deps }
 
-      #it { is_expected.to contain_class('icinga::package') }
-      #it { is_expected.to contain_class('icinga::package::client') }
-      #it { is_expected.to contain_class('icinga::config') }
-      #it { is_expected.to contain_class('icinga::config::client') }
-      #it { is_expected.to contain_class('icinga::service') }
-      #it { is_expected.to contain_class('icinga::service::client') }
-      #it { is_expected.to contain_package('nrpe') }
-      #it { is_expected.to contain_package('nagios-plugins') }
-      #it { is_expected.to contain_package('nagios-plugins-perl') }
-      #it { is_expected.to contain_package('nagios-plugins-all') }
-      #it { is_expected.to contain_file('/etc/nagios/nrpe.cfg') }
-      #it { is_expected.to contain_file('/etc/nrpe.d/base.cfg') }
+      it { is_expected.to contain_class('local_users') }
+      it { is_expected.to contain_class('local_users::params') }
+
+      it { is_expected.to contain_file('/etc/login.defs').with_ensure('file') }
+
+      it { is_expected.to contain_user('jane').with_ensure('present').with_groups('wheel') }
+      it { is_expected.to contain_user('john').with_ensure('present').with_password('!!') }
+      it { is_expected.to contain_user('root').with_ensure('present').with_password('!!') }
 
       case facts[:osfamily]
       when 'RedHat'
-        if facts[:lsbmajdistrelease] = '5'
-          it { is_expected.to contain_warning('The current operating system is not supported!') }
+        it 'should generate valid content for login.defs' do
+          content = catalogue.resource('file', '/etc/login.defs').send(:parameters)[:content]
+          expect(content).to match('PASS_MAX_DAYS')
+          expect(content).to match('USERDEL_CMD')
         end
       else
         it { is_expected.to contain_warning('The current operating system is not supported!') }

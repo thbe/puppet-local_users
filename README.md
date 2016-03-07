@@ -1,5 +1,9 @@
 # local_users
 
+[![Build Status](https://travis-ci.org/thbe/puppet-local_users.png?branch=master)](https://travis-ci.org/thbe/puppet-local_users)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/thbe/local_users.svg)](https://forge.puppetlabs.com/thbe/local_users)
+[![Coverage Status](https://coveralls.io/repos/thbe/puppet-local_users/badge.svg?branch=master&service=github)](https://coveralls.io/github/thbe/puppet-local_users?branch=master)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -15,9 +19,7 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module manage local user accounts.
 
 ## Module Description
 
