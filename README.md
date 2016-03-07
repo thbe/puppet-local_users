@@ -23,59 +23,45 @@ This module manage local user accounts.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+With this module you can manage your local users as well as the root account.
 
 ## Setup
 
 ### What local_users affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+* Create specified users.
 
 ### Beginning with local_users
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Simply include the class and specify one ore more users that should be created.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+```puppet
+class { 'local_users':
+  users => {
+    'john' => { 'comment' => 'John Doe', 'shell' => '/bin/bash',  'password' => '!!' },
+    'jane' => { 'comment' => 'Jane Doe', 'home'  => '/home/jane', 'groups'   => 'wheel' }
+  },
+}
+```
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
-
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module has been built on and tested against Puppet 3.7 and higher.
 
-## Development
+The module has been tested on:
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+* RedHat Enterprise Linux 5/6/7
+* Scientific Linux 5/6/7
+* CentOS Linux 5/6/7
+* Ubuntu 14.04 LTS
 
-## Release Notes/Contributors/Etc **Optional**
+Testing on other platforms has been light and cannot be guaranteed.
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+##Development
+
+If you like to add or improve this module, feel free to fork the module and send
+me a merge request with the modification.
