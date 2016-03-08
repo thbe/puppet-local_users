@@ -50,14 +50,14 @@ class { 'local_users':
 
 ## Limitations
 
-This module has been built on and tested against Puppet 3.7 and higher.
+This module has been built on and tested against Puppet 4.0 and higher.
 
 The module has been tested on:
 
 * RedHat Enterprise Linux 5/6/7
 * Scientific Linux 5/6/7
 * CentOS Linux 5/6/7
-* Ubuntu 14.04 LTS
+* Oracle Enterprise Linux 5/6/7
 
 Testing on other platforms has been light and cannot be guaranteed.
 
