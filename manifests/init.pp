@@ -85,7 +85,7 @@ class local_users (
         user { $id:
           ensure     => present,
           managehome => true,
-          *          => $attributes
+          *          => $attributes,
         }
       }
     }

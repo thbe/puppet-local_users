@@ -1,0 +1,5 @@
+fixtures:
+  symlinks:
+    local_users: "#{source_dir}"
+  repositories:
+  forge_modules:
